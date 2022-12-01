@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <INPUT_APP_NAME>-deployment
+  labels:
+    app: <INPUT_APP_NAME>
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: <INPUT_APP_NAME>
+  template:
+    metadata:
+      labels:
+        app: <INPUT_APP_NAME>
+    spec:
+      containers:
+      - name: <INPUT_APP_NAME>
+        image: kustomization-eks-repository
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
